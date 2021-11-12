@@ -2,22 +2,21 @@
  * @description:
  * @version:
  * @Author: changjia
- * @Date: 2021-11-12 15:19:42
+ * @Date: 2021-11-12 18:36:43
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-12 18:28:19
+ * @LastEditTime: 2021-11-12 18:36:43
 -->
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <div>Login</div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name: 'Login',
+
 }
 </script>
 
-<style>
+<style lang='less' scoped>
+
 </style>
