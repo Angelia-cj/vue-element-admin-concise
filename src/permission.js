@@ -1,10 +1,10 @@
 /*
- * @description:
+ * @description:通过token判断，路由跳转的页面
  * @version:
  * @Author: changjia
  * @Date: 2021-11-12 19:23:00
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-12 22:21:46
+ * @LastEditTime: 2021-11-15 14:22:03
  */
 import router from './router'
 import store from './store'
@@ -14,7 +14,7 @@ import { Message } from 'element-ui'
 import NProgress from 'nprogress' // 页面跳转出现在浏览器顶部的进度条
 import 'nprogress/nprogress.css' // 进度条样式
 
-import { getToken } from '@/utils/auth'
+import { getToken } from '@/utils/auth' // 从cookie中获取token
 
 NProgress.configure({ showSpinner: false }) // 进度条配置
 
@@ -23,7 +23,7 @@ const whiteList = ['/login'] //没有重定向白名单
 //全局前置守卫
 router.beforeEach(async(to, from, next) => {
   // 开启进度条
-  NProgress.start();
+  NProgress.start()
 
   // 判断用户是否已经登录
   const hasToken = getToken()
@@ -40,7 +40,7 @@ router.beforeEach(async(to, from, next) => {
       } else {
         try {
           // 获取用户信息
-          await store.dispatch('/user/getInfo')
+          await store.dispatch('user/getInfo')
           next()
         } catch (error) {
           // 移除令牌，到登录页面重新登录

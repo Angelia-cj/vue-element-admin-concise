@@ -4,12 +4,15 @@
  * @Author: changjia
  * @Date: 2021-11-12 15:19:42
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-12 22:11:56
+ * @LastEditTime: 2021-11-15 18:26:57
  */
 import Vue from 'vue'
 
+import 'normalize.css/normalize.css' // 格式化css
+
 import ElementUI from 'element-ui'
 
+import '@/styles/index.scss' // 全局css
 
 import App from './App.vue'
 import router from './router'
@@ -30,13 +33,12 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
-Vue.use(Router)
-
 // set ElementUI lang to EN
 // Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
 Vue.use(ElementUI)
 
+// 浏览器控制台不显示非生成环境打包的提示
 Vue.config.productionTip = false
 
 new Vue({

@@ -4,18 +4,18 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:27:50
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-12 22:31:17
+ * @LastEditTime: 2021-11-15 14:16:22
  */
 import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
 
-// 创建路由对象
+// 所有路由
 export const constantRoutes = [
   {
     path: '/login',
-    component: () => import('@/views/login/index'),
+    component: () => import('@/views/login/index'), // 路由懒加载模式
     hidden: true
   },
 
@@ -28,8 +28,7 @@ export const constantRoutes = [
   // 404 页面必须放到最后
   {
     path: '*',
-    // redirect: '/404',
-    redirect: '/login',
+    redirect: '/404',
     hidden: true
   }
 ]
@@ -48,4 +47,5 @@ export function resetRouter() {
   router.matcher = newRouter.matcher
 }
 
+// 向外暴露路由器对象
 export default router
