@@ -1,4 +1,4 @@
-# vue-cj
+# vue-element-admin-concise
 
 ## Project setup
 ```
