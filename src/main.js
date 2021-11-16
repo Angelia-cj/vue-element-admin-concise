@@ -10,7 +10,8 @@ import Vue from 'vue'
 
 import 'normalize.css/normalize.css' // 格式化css
 
-import ElementUI from 'element-ui'
+import ElementUI from 'element-ui' // 引入组件库
+import 'element-ui/lib/theme-chalk/index.css' // 引入样式
 
 import '@/styles/index.scss' // 全局css
 
@@ -18,8 +19,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-
-import '@/permission' // 权限控制
+import '@/icons' // svg图标
+import '@/permission' // 路由跳转权限控制
 
 /**
  * 如果你不想使用mock-server
@@ -29,8 +30,8 @@ import '@/permission' // 权限控制
  * 请在上线前删除!！！
  */
 if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mocks')
-  mockXHR()
+    const { mockXHR } = require('../mocks')
+    mockXHR()
 }
 
 // set ElementUI lang to EN
@@ -42,7 +43,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App),
+    router,
+    store,
+    render: h => h(App),
 }).$mount('#app')
