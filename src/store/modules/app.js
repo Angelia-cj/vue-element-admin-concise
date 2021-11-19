@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:56:46
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-16 22:21:37
+ * @LastEditTime: 2021-11-19 19:46:04
  */
 import Cookies from 'js-cookie'
 
@@ -29,22 +29,28 @@ const state = {
  */
 // 更改状态的唯一方法是提交 mutation 并返给 state
 const mutations = {
-  TOGGLE_SIDEBAR: state => {
-    state.sidebar.opened = !state.sidebar.opened
-    state.sidebar.withoutAnimation = false
+  // 切换侧边导航栏的开关
+  TOGGLE_SIDEBAR: (state) => {
+    state.sidebar.opened = !state.sidebar.opened;
+    state.sidebar.withoutAnimation = false;
     if (state.sidebar.opened) {
-      Cookies.set('sidebarStatus', 1)
+      // 如果打开，设置status=1
+      Cookies.set("sidebarStatus", 1);
     } else {
-      Cookies.set('sidebarStatus', 0);
+      // 如果关闭，设置status=0
+      Cookies.set("sidebarStatus", 0);
     }
+    // 刷新后通过cookies保留sidebar.opened状态
   },
+  // 关闭侧边导航栏
   CLOSE_SIDEBAR: (state, withoutAnimation) => {
-    Cookies.set('sidebarStatus', 0)
-    state.sidebar.opened = false
-    state.sidebar.withoutAnimation = withoutAnimation
+    Cookies.set("sidebarStatus", 0);
+    state.sidebar.opened = false;
+    state.sidebar.withoutAnimation = withoutAnimation;
   },
+  // 切换设备类型
   TOGGLE_DEVICE: (state, device) => {
-    state.device = device
+    state.device = device;
   }
 }
 
@@ -58,7 +64,7 @@ const actions = {
     commit('TOGGLE_SIDEBAR')
   },
   closeSidebar({ commit }, { withoutAnimation }) {
-    commit('CLOSE_SIDEBAR', withoutAnimation);
+    commit('CLOSE_SIDEBAR', withoutAnimation)
   },
   toggleDevice({ commit }) {
     commit('TOGGLE_DEVICES')

@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:57:03
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-16 22:54:12
+ * @LastEditTime: 2021-11-19 19:04:48
  */
 import { login, getInfo, logout } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
@@ -58,7 +58,7 @@ const actions = {
         const { data } = response
 
         if (!data) {
-          return reject("验证失败，请重新登录!");
+          return reject('验证失败，请重新登录!')
         }
 
         const { name, avatar } = data

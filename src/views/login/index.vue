@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:36:43
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-16 20:38:39
+ * @LastEditTime: 2021-11-19 21:50:34
 -->
 <template>
   <div class="login-container">
@@ -47,15 +47,15 @@ import { validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
-  data() {
-    const validateUsername = (rule,value,callback) => {
+  data () {
+    const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
         callback(new Error('请输入正确的用户名！'))
       } else {
         callback()
       }
     }
-    const validatePassword = (rule,value,callback) => {
+    const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
         callback(new Error('密码不能少于6位数！'))
       } else {
@@ -68,8 +68,8 @@ export default {
         password: '111111'
       },
       loginRules: {
-        username: [{required:true,trigger:'blur',validator:validateUsername}],
-        password: [{required:true,trigger:'blur',validator:validatePassword}]
+        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
       },
       passwordType: 'password',
       loading: false,
@@ -85,27 +85,27 @@ export default {
     }
   },
   methods: {
-    showPwd(){
+    showPwd () {
       if (this.passwordType === 'password') {
         this.passwordType = ''
       } else {
         this.passwordType = 'password'
       }
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         this.$refs.password.focus()
       })
     },
-    handleLogin(){
-      this.$refs.loginForm.validate(valid =>{
+    handleLogin () {
+      this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$route.dispatch('user/login',this.loginForm).then(()=>{
-            this.$route.path({path: this.redirect || '/'})
+          this.$store.dispatch('user/login', this.loginForm).then(() => {
+            this.$router.push({ path: this.redirect || '/' })
             this.loading = false
-          }).catch(()=>{
+          }).catch(() => {
             this.loading = false
           })
-        }else{
+        } else {
           console.log('提交错误！')
           return false
         }
@@ -118,21 +118,21 @@ export default {
 <style lang="scss">
 /* 修复input 背景不协调 和光标变色 */
 $bg: #283443;
-$light_gary:#fff;
-$cursor:#fff;
+$light_gary: #fff;
+$cursor: #fff;
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-  .login-container .el-input input{
+  .login-container .el-input input {
     color: $cursor;
   }
 }
 
 /* reset element-ui css */
-.login-container{
-  .el-input{
+.login-container {
+  .el-input {
     display: inline-block;
     height: 47px;
     width: 85%;
-    input{
+    input {
       background: transparent;
       border: 0px;
       -webkit-appearance: none;
@@ -149,7 +149,7 @@ $cursor:#fff;
     }
   }
   .el-form-item {
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: #454545;
@@ -162,7 +162,7 @@ $bg: #2d3a4b;
 $dark_gary: #889aa4;
 $light_gary: #eee;
 
-.login-container{
+.login-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;

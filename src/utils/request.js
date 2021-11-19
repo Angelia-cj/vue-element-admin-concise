@@ -3,7 +3,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:59:55
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-16 22:30:05
+ * @LastEditTime: 2021-11-19 19:03:32
  */
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
@@ -14,7 +14,7 @@ import { getToken } from '@/utils/auth'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // 当跨域请求时发送cookie
-  timeout: 5000, // 请求超时
+  timeout: 5000 // 请求超时
 })
 
 // 请求拦截器
@@ -50,28 +50,27 @@ service.interceptors.response.use(
     // 如果自定义状态码不是20000，则判定为错误
     if (res.code !== 20000) {
       Message({
-        message: res.message || "错误！",
-        type: "error",
-        duration: 5 * 1000,
-      });
+        message: res.message || '错误！',
+        type: 'error',
+        duration: 5 * 1000
+      })
 
       // 50008:非法token; 50012:其他客户端登录; 50014:令牌过期
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // 重新登录
         MessageBox.confirm(
-            "您已注销，您可以取消停留在此页面，或重新登录!",
-            "登录退出提示", {
-              confirmButtonText: "重新登录",
-              cancelButtonText: "取消",
-              type: "warning",
-            }
-          )
+            '您已注销，您可以取消停留在此页面，或重新登录!',
+            '登录退出提示', {
+              confirmButtonText: '重新登录',
+              cancelButtonText: '取消',
+              type: 'warning'
+            })
           .then(() => {
             store.$dispatch('user/resetToken').then(() => {
               location.reload()
             })
           })
-        return Promise.reject(new Error(res.message || "错误！"));
+        return Promise.reject(new Error(res.message || '错误！'))
       }
     } else {
       return res
