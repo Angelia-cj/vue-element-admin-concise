@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 15:19:42
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-15 18:26:57
+ * @LastEditTime: 2021-11-22 23:10:58
  */
 import Vue from 'vue'
 
@@ -30,8 +30,8 @@ import '@/permission' // 路由跳转权限控制
  * 请在上线前删除!！！
  */
 if (process.env.NODE_ENV === 'production') {
-    const { mockXHR } = require('../mocks')
-    mockXHR()
+  const { mockXHR } = require('../mocks')
+  mockXHR()
 }
 
 // set ElementUI lang to EN
@@ -43,7 +43,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 new Vue({
-    router,
-    store,
-    render: h => h(App),
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app')

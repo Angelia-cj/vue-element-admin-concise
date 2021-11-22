@@ -46,7 +46,7 @@ module.exports = {
       warnings: false,
       errors: true,
     },
-    // before: require('./mock/mock-server.js')
+    before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
@@ -60,15 +60,13 @@ module.exports = {
   },
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
-    config.plugin("preload").tap(() => [
-      {
-        rel: "preload",
-        // to ignore runtime.js
-        // https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/cli-service/lib/config/app.js#L171
-        fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
-        include: "initial",
-      },
-    ]);
+    config.plugin("preload").tap(() => [{
+      rel: "preload",
+      // to ignore runtime.js
+      // https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/cli-service/lib/config/app.js#L171
+      fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
+      include: "initial",
+    }, ]);
 
     // when there are many pages, it will cause too many meaningless requests
     config.plugins.delete("prefetch");
@@ -91,12 +89,10 @@ module.exports = {
       config
         .plugin("ScriptExtHtmlWebpackPlugin")
         .after("html")
-        .use("script-ext-html-webpack-plugin", [
-          {
-            // `runtime` must same as runtimeChunk name. default is `runtime`
-            inline: /runtime\..*\.js$/,
-          },
-        ])
+        .use("script-ext-html-webpack-plugin", [{
+          // `runtime` must same as runtimeChunk name. default is `runtime`
+          inline: /runtime\..*\.js$/,
+        }, ])
         .end();
       config.optimization.splitChunks({
         chunks: "all",

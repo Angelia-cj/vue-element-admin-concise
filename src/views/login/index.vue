@@ -4,11 +4,11 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:36:43
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 21:50:34
+ * @LastEditTime: 2021-11-22 21:58:05
 -->
 <template>
   <div class="login-container">
-    <el-form :model="loginForm" ref="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
         <h3 class="title">后台管理系统登录</h3>
@@ -19,14 +19,14 @@
           <svg-icon icon-class="user" />
         </span>
 
-        <el-input v-model="loginForm.username" placeholder="请输入用户名" ref="username" name="username" type="text" tabindex="1" auto-complete="on"></el-input>
+        <el-input ref="username" v-model="loginForm.username" placeholder="请输入用户名" name="username" type="text" tabindex="1" auto-complete="on" />
       </el-form-item>
 
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password" />
         </span>
-        <el-input :key="passwordType" v-model="loginForm.password" placeholder="请输入密码" ref="password" :type="passwordType" tabindex="2" name="password" auto-complete="on" @keyup.enter.native="handleLogin"></el-input>
+        <el-input :key="passwordType" ref="password" v-model="loginForm.password" placeholder="请输入密码" :type="passwordType" tabindex="2" name="password" auto-complete="on" @keyup.enter.native="handleLogin" />
         <span class="show-pwd" @click="showPwd">
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
@@ -47,7 +47,7 @@ import { validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
-  data () {
+  data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
         callback(new Error('请输入正确的用户名！'))
@@ -78,14 +78,14 @@ export default {
   },
   watch: {
     $route: {
-      handler: function (route) {
+      handler: function(route) {
         this.redirect = route.query && route.query.redirect
       },
       immediate: true // 立即跳转
     }
   },
   methods: {
-    showPwd () {
+    showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
       } else {
@@ -95,7 +95,7 @@ export default {
         this.$refs.password.focus()
       })
     },
-    handleLogin () {
+    handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
@@ -110,8 +110,8 @@ export default {
           return false
         }
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

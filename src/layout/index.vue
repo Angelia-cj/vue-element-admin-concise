@@ -4,18 +4,11 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:50:17
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 23:40:31
+ * @LastEditTime: 2021-11-22 22:01:13
 -->
 <template>
-  <div
-    class="app-wrapper"
-    :class="classObj"
-  >
-    <div
-      v-if="device==='mobile' && sidebar.opened"
-      class="drawer-bg"
-      @click="handleClickOutSide"
-    />
+  <div class="app-wrapper" :class="classObj">
+    <div v-if="device==='mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
@@ -46,20 +39,20 @@ export default {
       return this.$store.state.app.device
     },
     fixedHeader() {
-      return this.$store.state.app.fixedHeader
+      return this.$store.state.settings.fixedHeader
     },
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: !this.sidebr.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device = 'mobile'
+        mobile: this.device === 'mobile'
       }
     }
   },
   methods: {
-    handleClickOutSide() {
-      this.$route.dispatch('app/closeSidebar', { withoutAnimation: false })
+    handleClickOutside() {
+      this.$store.dispatch('app/closeSidebar', { withoutAnimation: false })
     }
   }
 }
