@@ -18,9 +18,9 @@ import { getToken } from '@/utils/auth' // 从cookie中获取token
 
 NProgress.configure({ showSpinner: false }) // 进度条配置
 
-const whiteList = ['/login'] //没有重定向白名单
+const whiteList = ['/login'] // 没有重定向白名单
 
-//全局前置守卫
+//  全局前置守卫
 router.beforeEach(async(to, from, next) => {
   // 开启进度条
   NProgress.start()
@@ -34,8 +34,8 @@ router.beforeEach(async(to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
-      const hasGetUserInfo = store.getters.name
-      if (hasGetUserInfo) {
+      const hasgetUserInfo = store.getters.name
+      if (hasgetUserInfo) {
         next()
       } else {
         try {
@@ -58,7 +58,7 @@ router.beforeEach(async(to, from, next) => {
       next()
     } else {
       // 其他没有访问权限的页面被重定向到登录页面
-      next(`/login?redirect=${to.path}`);
+      next(`/login?redirect=${to.path}`)
       NProgress.done()
     }
   }

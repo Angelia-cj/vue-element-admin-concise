@@ -1,6 +1,13 @@
+/*
+ * @description:
+ * @Author: changjia
+ * @Date: 2021-11-22 20:50:13
+ * @LastEditors: changjia
+ * @LastEditTime: 2021-11-24 18:03:20
+ */
 const Mock = require('mockjs')
 
-const { param2Obj } = require("./modules/utils");
+const { param2Obj } = require('./modules/utils')
 
 const user = require('./modules/user')
 
@@ -25,22 +32,22 @@ function mockXHR() {
 
   function XHR2ExpressReqWrap(respond) {
     return function(options) {
-      let result = none;
-      if (response instanceof Function) {
-        const { body, type, url } = options;
+      let result = null
+      if (respond instanceof Function) {
+        const { body, type, url } = options
         result = respond({
           method: type,
           body: JSON.parse(body),
-          query: param2Obj(url),
-        });
+          query: param2Obj(url)
+        })
       } else {
-        result = respond;
+        result = respond
       }
       return Mock.Mock(result)
     }
   }
   for (const i of mocks) {
-    Mock.Mock(new RegExp(i.url), i.type || 'GET', XHR2ExpressReqWrap(i.response))
+    Mock.Mock(new RegExp(i.url), i.type || 'get', XHR2ExpressReqWrap(i.response))
   }
 }
 

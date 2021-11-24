@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:56:57
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 19:11:41
+ * @LastEditTime: 2021-11-24 22:01:46
  */
 import defaultSettings from '@/settings'
 
@@ -32,7 +32,7 @@ const actions = {
 }
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   mutations,
   actions

@@ -3,7 +3,7 @@
  * @Author: changjia
  * @Date: 2021-11-22 21:16:40
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-22 21:45:21
+ * @LastEditTime: 2021-11-24 17:56:18
  */
 const chokidar = require('chokidar')
 const bodyParser = require('body-parser')
@@ -44,7 +44,7 @@ function unregisterRoutes() {
 const responseFake = (url, type, respond) => {
   return {
     url: new RegExp(`${process.env.VUE_APP_BASE_API}${url}`),
-    type: type || 'GET',
+    type: type || 'get',
     response(req, res) {
       console.log("请求调用:" + req.path)
       res.join(
@@ -87,5 +87,4 @@ module.exports = app => {
       }
     }
   })
-
 }

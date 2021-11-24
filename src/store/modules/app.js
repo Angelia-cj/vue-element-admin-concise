@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:56:46
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 19:46:04
+ * @LastEditTime: 2021-11-24 22:02:13
  */
 import Cookies from 'js-cookie'
 
@@ -31,26 +31,26 @@ const state = {
 const mutations = {
   // 切换侧边导航栏的开关
   TOGGLE_SIDEBAR: (state) => {
-    state.sidebar.opened = !state.sidebar.opened;
-    state.sidebar.withoutAnimation = false;
+    state.sidebar.opened = !state.sidebar.opened
+    state.sidebar.withoutAnimation = false
     if (state.sidebar.opened) {
       // 如果打开，设置status=1
-      Cookies.set("sidebarStatus", 1);
+      Cookies.set('sidebarStatus', 1)
     } else {
       // 如果关闭，设置status=0
-      Cookies.set("sidebarStatus", 0);
+      Cookies.set('sidebarStatus', 0)
     }
     // 刷新后通过cookies保留sidebar.opened状态
   },
   // 关闭侧边导航栏
   CLOSE_SIDEBAR: (state, withoutAnimation) => {
-    Cookies.set("sidebarStatus", 0);
-    state.sidebar.opened = false;
-    state.sidebar.withoutAnimation = withoutAnimation;
+    Cookies.set('sidebarStatus', 0)
+    state.sidebar.opened = false
+    state.sidebar.withoutAnimation = withoutAnimation
   },
   // 切换设备类型
   TOGGLE_DEVICE: (state, device) => {
-    state.device = device;
+    state.device = device
   }
 }
 
@@ -72,7 +72,7 @@ const actions = {
 }
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   mutations,
   actions

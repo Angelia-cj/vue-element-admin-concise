@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 15:19:42
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-22 23:10:58
+ * @LastEditTime: 2021-11-24 19:54:38
  */
 import Vue from 'vue'
 
@@ -29,8 +29,9 @@ import '@/permission' // 路由跳转权限控制
  * 目前MockJs将在生产环境中使用，
  * 请在上线前删除!！！
  */
+// if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mocks')
+  const { mockXHR } = require('../mock')
   mockXHR()
 }
 

@@ -4612,7 +4612,7 @@ http-errors@~1.6.2:
 http-errors@~1.7.2:
   version "1.7.3"
   resolved "https://registry.nlark.com/http-errors/download/http-errors-1.7.3.tgz?cache=0&sync_timestamp=1624607959970&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhttp-errors%2Fdownload%2Fhttp-errors-1.7.3.tgz#6c619e4f9c60308c38519498c14fbb10aacebb06"
-  integrity sha1-bGGeT5xgMIw4UZSYwU+7EKrOuwY=
+  integrity sha1-bGget5xgMIw4UZSYwU+7EKrOuwY=
   dependencies:
     depd "~1.1.2"
     inherits "2.0.4"

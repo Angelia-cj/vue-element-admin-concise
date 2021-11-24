@@ -5,13 +5,12 @@
  * @LastEditors: changjia
  * @LastEditTime: 2021-11-20 00:38:07
  */
-
 const tokens = {
   admin: {
-    token: 'admin-token',
+    token: 'admin-token'
   },
   editor: {
-    token: 'editor-token',
+    token: 'editor-token'
   }
 }
 
@@ -31,10 +30,10 @@ const users = {
 }
 
 module.exports = [
-  // 用户登录
+  // 用户登录 user/login
   {
     url: '/vue-admin-concise/user/login',
-    type: 'POST',
+    type: 'post',
     response: config => {
       const { username } = config.body
       const token = tokens[username]
@@ -46,30 +45,28 @@ module.exports = [
           message: '账户和密码出错.'
         }
       }
-
       return {
         code: 20000,
         data: token
       }
-    },
+    }
   },
 
-  // 获取用户信息
+  // 获取用户信息 get user info
   {
-    url: '/vue-admin-concise/user/info.*',
-    type: 'GET',
+    url: '/vue-admin-concise/user/info\.*',
+    type: 'get',
     response: config => {
       const { token } = config.query
       const info = users[token]
 
-      //模拟出错
+      // 模拟出错
       if (!info) {
         return {
           code: 50008,
           message: '登录失败，不能获取用户信息！'
         }
       }
-
       return {
         code: 20000,
         data: info
@@ -77,10 +74,10 @@ module.exports = [
     }
   },
 
-  // 退出登录
+  // 退出登录 user/logout
   {
     url: '/vue-admin-concise/user/logout',
-    type: 'POST',
+    type: 'post',
     response: _ => {
       return {
         code: 20000,

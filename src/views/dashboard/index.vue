@@ -4,17 +4,17 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:44:50
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 21:17:54
+ * @LastEditTime: 2021-11-24 18:10:01
 -->
 <template>
-<div>
-  {{name}}
-</div>
+  <div>
+    {{ name }}
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Dashboard',
+  name: 'Dashboard'
 }
 </script>
 

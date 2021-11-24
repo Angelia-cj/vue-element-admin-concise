@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:40:28
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-12 19:21:37
+ * @LastEditTime: 2021-11-24 18:05:30
 -->
 <template>
   <div class="wscn-http404-container">
@@ -23,7 +23,7 @@
           All rights reserved
           <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
         </div>
-        <div class="bullshit_headline">{{message}}</div>
+        <div class="bullshit_headline">{{ message }}</div>
         <div class="bullshit__info">
           Please check that the URL you entered is correct, or click the button below to return to the homepage.
           <a href="" class="bullshit__return-home">Back to home</a>
@@ -37,7 +37,7 @@
 export default {
   name: 'Page404',
   computed: {
-    message(){
+    message() {
       return 'The webmaster said that you can not enter this page...'
     }
   }

@@ -30,9 +30,9 @@ export const constantRoutes = [
     hidden: true
   },
 
-  // 主平台
+  // 首页
   {
-    path: '/',
+    path: '/', // '/'：代表首页
     component: Layout,
     redirect: '/dashboard',
     children: [{

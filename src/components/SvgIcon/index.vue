@@ -4,32 +4,31 @@
  * @Author: changjia
  * @Date: 2021-11-16 17:26:41
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-16 19:24:25
+ * @LastEditTime: 2021-11-24 18:19:35
 -->
 <template>
-  <div class="svg-external-icon svg-icon" :style="styleExternalIcon" v-on="$listeners" v-if="isExternal">
-  </div>
-  <svg :class="svgClass" aria-hidden="true" v-on="$listeners" v-else>
-    <use :xlink:href="iconName"></use>
+  <div v-if="isExternal" class="svg-external-icon svg-icon" :style="styleExternalIcon" v-on="$listeners" />
+  <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
+    <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script>
-import { isExternal } from "@/utils/validate";
+import { isExternal } from '@/utils/validate'
 
 export default {
   name: 'SvgIcons',
   props: {
-    iconClass:{
-      type:String,
-      required:true
+    iconClass: {
+      type: String,
+      required: true
     },
-    className:{
-      type:String,
-      default:''
+    className: {
+      type: String,
+      default: ''
     }
   },
-  computed:{
+  computed: {
     isExternal() {
       return isExternal(this.iconClass)
     },

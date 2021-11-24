@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:36:43
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-22 21:58:05
+ * @LastEditTime: 2021-11-24 14:40:45
 -->
 <template>
   <div class="login-container">
@@ -99,8 +99,9 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
+          // 调用store里面的user.js里的 user/login 找到接口api
           this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
+            this.$router.push({ path: this.redirect || '/' }) // 路由跳转
             this.loading = false
           }).catch(() => {
             this.loading = false
