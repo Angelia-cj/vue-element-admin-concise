@@ -3,12 +3,12 @@
  * @Author: changjia
  * @Date: 2021-11-19 19:51:13
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 19:59:34
+ * @LastEditTime: 2021-11-26 21:28:59
 -->
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <router-view :key="key"></router-view>
+      <router-view :key="key" />
     </transition>
   </section>
 </template>
@@ -16,8 +16,8 @@
 <script>
 export default {
   name: 'AppMain',
-  computed:{
-    key(){
+  computed: {
+    key() {
       return this.$route.path
     }
   }

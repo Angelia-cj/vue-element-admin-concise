@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:56:46
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-24 22:02:13
+ * @LastEditTime: 2021-11-26 21:21:52
  */
 import Cookies from 'js-cookie'
 
@@ -67,7 +67,7 @@ const actions = {
     commit('CLOSE_SIDEBAR', withoutAnimation)
   },
   toggleDevice({ commit }) {
-    commit('TOGGLE_DEVICES')
+    commit('TOGGLE_DEVICE')
   }
 }
 

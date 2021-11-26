@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:50:17
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-22 22:01:13
+ * @LastEditTime: 2021-11-26 21:23:33
 -->
 <template>
   <div class="app-wrapper" :class="classObj">
@@ -44,7 +44,7 @@ export default {
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
-        openSidebar: !this.sidebr.opened,
+        openSidebar: !this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === 'mobile'
       }

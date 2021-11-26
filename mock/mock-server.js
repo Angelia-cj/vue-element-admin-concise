@@ -3,7 +3,7 @@
  * @Author: changjia
  * @Date: 2021-11-22 21:16:40
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-24 17:56:18
+ * @LastEditTime: 2021-11-26 21:17:10
  */
 const chokidar = require('chokidar')
 const bodyParser = require('body-parser')
@@ -46,8 +46,8 @@ const responseFake = (url, type, respond) => {
     url: new RegExp(`${process.env.VUE_APP_BASE_API}${url}`),
     type: type || 'get',
     response(req, res) {
-      console.log("请求调用:" + req.path)
-      res.join(
+      console.log('请求调用:' + req.path)
+      res.json(
         Mock.mock(respond instanceof Function ? respond(req, res) : respond))
     }
   }
