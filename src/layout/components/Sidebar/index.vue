@@ -1,0 +1,59 @@
+<!--
+ * @description:
+ * @Author: changjia
+ * @Date: 2021-11-28 21:33:06
+ * @LastEditors: changjia
+ * @LastEditTime: 2021-11-28 22:49:29
+-->
+<template>
+  <div :class="{'has-logo':showLogo}">
+    <logo v-if="showLogo" :collapse="isCollapse" />
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <el-menu :default-active="activeMenu" :collapse="isCollapse" :background-color="variables.menuBg" :text-color="variables.menuText" :unique-opened="false" :active-text-color="variables.menuActiveText" :collapse-transition="false" mode="vertical">
+        <sidebar-item v-if="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+      </el-menu>
+    </el-scrollbar>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import Logo from './Logo.vue'
+import SidebarItem from './SidebarItem.vue'
+import variables from '@/styles/variables.scss'
+
+export default {
+  name: 'Sidebar',
+  components: {
+    Logo,
+    SidebarItem
+  },
+  computed: {
+    ...mapGetters(['sidebar']),
+    routes() {
+      return this.$router.options.routes
+    },
+    activeMenu() {
+      const route = this.$route
+      const { meta, path } = route
+
+      // 如果设置了路径，侧边栏将突出显示您设置的路径
+      if (meta.activeMenu) {
+        return meta.activeMenu
+      }
+      return path
+    },
+    showLogo() {
+      return this.$store.state.settings.sidebarLogo
+    },
+    variables() {
+      return variables
+    },
+    isCollapse() {
+      return !this.sidebar.opened
+    }
+  }
+
+}
+</script>
+
