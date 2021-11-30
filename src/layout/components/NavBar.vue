@@ -3,7 +3,7 @@
  * @Author: changjia
  * @Date: 2021-11-19 19:51:27
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-26 22:51:47
+ * @LastEditTime: 2021-11-30 22:38:43
 -->
 <template>
   <div class="navbar">
@@ -12,21 +12,21 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="tick">
+      <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
-            <el-dropdown-menu>首页</el-dropdown-menu>
+            <el-dropdown-item>首页</el-dropdown-item>
           </router-link>
           <a target="_blank" href="https://github.com/Angelia-cj/vue-element-admin-concise">
-            <el-dropdown-menu>Github</el-dropdown-menu>
+            <el-dropdown-item>Github</el-dropdown-item>
           </a>
-          <el-dropdown-menu divided @click.native="logout">
+          <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">退出</span>
-          </el-dropdown-menu>
+          </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -59,6 +59,7 @@ export default {
 }
 </script>
 
+
 <style lang="scss" scoped>
   .navbar {
     height: 50px;
@@ -90,7 +91,7 @@ export default {
       line-height: 50px;
 
       &:focus {
-        outline: none
+        outline: none;
       }
 
       .right-menu-item {
@@ -112,7 +113,7 @@ export default {
       }
 
       .avatar-container {
-        margin-right: 30px;
+        margin-right: 50px;
 
         .avatar-wrapper {
           margin-top: 5px;
@@ -125,12 +126,13 @@ export default {
             border-radius: 10px;
           }
 
+          // 下拉箭头
           .el-icon-caret-bottom {
             cursor: pointer;
             position: absolute;
             right: -20px;
             top: 25px;
-            font-size: 12px;
+            font-size: 16px;
           }
         }
       }

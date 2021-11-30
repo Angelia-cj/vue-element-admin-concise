@@ -4,20 +4,36 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:44:50
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-24 18:10:01
+ * @LastEditTime: 2021-11-30 20:54:44
 -->
 <template>
-  <div>
-    {{ name }}
+  <div class="dashboard-container">
+    <div class="dashboard-text">
+      登录用户：{{name}}
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'Dashboard'
+  name: 'Dashboard',
+
+  computed:{
+    ...mapGetters(['name'])
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.dashboard {
+  &-container {
+    margin: 30px;
+  }
+  &-text {
+    font-size: 24px;
+    line-height: 50px;
+  }
+}
 </style>

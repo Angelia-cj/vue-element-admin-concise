@@ -4,10 +4,10 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:50:17
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-26 21:23:33
+ * @LastEditTime: 2021-11-30 18:44:48
 -->
 <template>
-  <div class="app-wrapper" :class="classObj">
+  <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
     <div class="main-container">
@@ -59,8 +59,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/mixin.scss';
-@import '../styles/variables.scss';
+@import '~@/styles/mixin.scss';
+@import '~@/styles/variables.scss';
 
 .app-wrapper {
   @include clearfix;

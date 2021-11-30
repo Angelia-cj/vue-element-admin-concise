@@ -3,14 +3,14 @@
  * @Author: changjia
  * @Date: 2021-11-28 21:33:06
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-28 22:49:29
+ * @LastEditTime: 2021-11-30 20:33:39
 -->
 <template>
   <div :class="{'has-logo':showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu :default-active="activeMenu" :collapse="isCollapse" :background-color="variables.menuBg" :text-color="variables.menuText" :unique-opened="false" :active-text-color="variables.menuActiveText" :collapse-transition="false" mode="vertical">
-        <sidebar-item v-if="route in routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -18,8 +18,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Logo from './Logo.vue'
-import SidebarItem from './SidebarItem.vue'
+import Logo from './Logo'
+import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
 
 export default {
@@ -29,7 +29,9 @@ export default {
     SidebarItem
   },
   computed: {
-    ...mapGetters(['sidebar']),
+    ...mapGetters([
+      'sidebar'
+    ]),
     routes() {
       return this.$router.options.routes
     },
@@ -53,7 +55,6 @@ export default {
       return !this.sidebar.opened
     }
   }
-
 }
 </script>
 
