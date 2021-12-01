@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 19:23:00
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-15 14:22:03
+ * @LastEditTime: 2021-12-01 21:48:56
  */
 import router from './router'
 import store from './store'
@@ -15,6 +15,7 @@ import NProgress from 'nprogress' // 页面跳转出现在浏览器顶部的进�
 import 'nprogress/nprogress.css' // 进度条样式
 
 import { getToken } from '@/utils/auth' // 从cookie中获取token
+import getPageTitle from '@/utils/get-page-title' // 页面根标签显示
 
 NProgress.configure({ showSpinner: false }) // 进度条配置
 
@@ -25,6 +26,9 @@ router.beforeEach(async(to, from, next) => {
   // 开启进度条
   NProgress.start()
 
+  // 设置页面根标签
+  document.title = getPageTitle(to.meta.title)
+
   // 判断用户是否已经登录
   const hasToken = getToken()
 
@@ -34,8 +38,8 @@ router.beforeEach(async(to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
-      const hasgetUserInfo = store.getters.name
-      if (hasgetUserInfo) {
+      const hasGetUserInfo = store.getters.name
+      if (hasGetUserInfo) {
         next()
       } else {
         try {

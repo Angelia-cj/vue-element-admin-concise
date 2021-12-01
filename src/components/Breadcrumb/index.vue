@@ -3,7 +3,7 @@
  * @Author: changjia
  * @Date: 2021-11-26 22:01:00
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-30 21:12:01
+ * @LastEditTime: 2021-12-01 22:08:56
 -->
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import pathToRegexp from 'path-to-regexp'
+import * as pathToRegexp from 'path-to-regexp'
 export default {
   name: 'Breadcrumb',
   data() {

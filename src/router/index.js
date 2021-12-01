@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:27:50
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-19 21:04:03
+ * @LastEditTime: 2021-12-01 22:31:59
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -42,6 +42,10 @@ export const constantRoutes = [
         import ('@/views/dashboard/index'),
       meta: { title: '首页', icon: 'dashboard' }
     }]
+  },
+  // 表格
+  {
+
   },
 
   // 404 页面必须放到最后

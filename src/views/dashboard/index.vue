@@ -4,12 +4,12 @@
  * @Author: changjia
  * @Date: 2021-11-16 20:44:50
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-30 20:54:44
+ * @LastEditTime: 2021-12-01 19:21:29
 -->
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">
-      登录用户：{{name}}
+      登录用户：{{ name }}
     </div>
   </div>
 </template>
@@ -19,8 +19,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Dashboard',
-
-  computed:{
+  computed: {
     ...mapGetters(['name'])
   }
 }

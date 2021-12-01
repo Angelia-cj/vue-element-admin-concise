@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 15:57:15
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-24 15:49:44
+ * @LastEditTime: 2021-12-01 21:15:15
  */
 'use strict'
 const path = require('path')
@@ -14,7 +14,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'vue element admin concise' // 首页标题
+const name = defaultSettings.title || 'Vue Admin Concise' // 首页标题
 
 // 如果您的端口设置为80，则使用管理员权限来执行命令行。
 // 例如，Mac: sudo npm run修改端口的方法如下:

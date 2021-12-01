@@ -3,14 +3,16 @@
  * @Author: changjia
  * @Date: 2021-11-19 19:51:27
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-30 22:38:43
+ * @LastEditTime: 2021-12-01 21:37:22
 -->
 <template>
   <div class="navbar">
+    <!-- 左侧侧边栏 隐藏或显示 -->
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSidebar" />
 
     <breadcrumb class="breadcrumb-container" />
 
+    <!-- 右上侧：横向导航栏-->
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -49,7 +51,7 @@ export default {
   },
   methods: {
     toggleSidebar() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch('app/toggleSidebar')
     },
     async logout() {
       await this.$store.dispatch('user/logout')
@@ -58,7 +60,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
   .navbar {
