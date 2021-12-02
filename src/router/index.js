@@ -4,7 +4,7 @@
  * @Author: changjia
  * @Date: 2021-11-12 18:27:50
  * @LastEditors: changjia
- * @LastEditTime: 2021-12-01 22:31:59
+ * @LastEditTime: 2021-12-02 21:00:00
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -43,9 +43,28 @@ export const constantRoutes = [
       meta: { title: '首页', icon: 'dashboard' }
     }]
   },
-  // 表格
+  // 表格和树形
   {
-
+    path: '/tableTree',
+    component: Layout,
+    redirect: '/tableTree/table',
+    name: 'tableTree',
+    meta: { title: '表格和树形', icon: 'el-icon-s-help' },
+    children: [{
+        path: 'table',
+        name: 'Table',
+        component: () =>
+          import ('@/views/tableTree/table/index'),
+        meta: { title: '表格', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () =>
+          import ('@/views/tableTree/tree/index'),
+        meta: { title: '树形', icon: 'tree' }
+      }
+    ]
   },
 
   // 404 页面必须放到最后
