@@ -3,12 +3,13 @@
  * @Author: changjia
  * @Date: 2021-11-22 21:16:40
  * @LastEditors: changjia
- * @LastEditTime: 2021-11-26 21:17:10
+ * @LastEditTime: 2021-12-09 22:17:07
  */
-const chokidar = require('chokidar')
+const chokidar = require('chokidar') // 监听文件变化
 const bodyParser = require('body-parser')
-const chalk = require('chalk')
+const chalk = require('chalk') // 终端字符串美化工具
 const path = require('path')
+const express = require('express')
 const Mock = require('mockjs')
 
 const mockDir = path.join(process.cwd(), 'mock')
@@ -55,8 +56,10 @@ const responseFake = (url, type, respond) => {
 
 module.exports = app => {
   // 解析 app.body
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
+  // app.use(bodyParser.json())
+  // app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: true }))
 
   const mockRoutes = registerRoutes(app)
   var mockRoutesLength = mockRoutes.mockRoutesLength
